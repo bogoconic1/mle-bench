@@ -200,7 +200,7 @@ def main():
         submission = Path(args.submission)
         report = grade_csv(submission, competition)
         logger.info("Competition report:")
-        logger.info(json.dumps(report.to_dict(), indent=4))
+        print(json.dumps(report.to_dict(), indent=4))
     if args.command == "dev":
         if args.dev_command == "download-leaderboard":
             if args.all:
