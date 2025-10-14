@@ -1,0 +1,18 @@
+id: playground-series-s5e10
+name: Accident Risk Prediction (Playground Series S5E10)
+competition_type: simple
+awards_medals: false
+prizes: null
+description: mlebench/competitions/playground-series-s5e10/description.md
+
+dataset:
+  answers: playground-series-s5e10/prepared/private/answers.csv
+  sample_submission: playground-series-s5e10/prepared/public/sample_submission.csv
+
+grader:
+  name: rmse
+  grade_fn: mlebench.competitions.playground-series-s5e10.grade:grade
+
+preparer: mlebench.competitions.playground-series-s5e10.prepare:prepare
+
+
