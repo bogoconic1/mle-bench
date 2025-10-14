@@ -53,10 +53,10 @@ def prepare(raw: Path, public: Path, private: Path) -> None:
 
     shutil.rmtree(private / "train_cleaned")
 
-    # Write `sampleSubmission.csv`
+    # Write `sample_submission.csv`
     sample_submission = answers.copy()
     sample_submission["value"] = 1
-    sample_submission.to_csv(public / "sampleSubmission.csv", index=False)
+    sample_submission.to_csv(public / "sample_submission.csv", index=False)
 
     # Sanity checks
     assert len(list((public / "train").glob("*.png"))) == len(old_train_img_fpaths) - len(
@@ -81,11 +81,11 @@ def prepare(raw: Path, public: Path, private: Path) -> None:
     )
 
     assert len(read_csv(private / "answers.csv")) == len(
-        read_csv(public / "sampleSubmission.csv")
+        read_csv(public / "sample_submission.csv")
     ), (
-        f"Expected `answers.csv` and `sampleSubmission.csv` to have the same number of rows, but "
+        f"Expected `answers.csv` and `sample_submission.csv` to have the same number of rows, but "
         f"got {len(read_csv(private / 'answers.csv'))} rows in `answers.csv` and "
-        f"{len(read_csv(public / 'sampleSubmission.csv'))} rows in `sampleSubmission.csv`."
+        f"{len(read_csv(public / 'sample_submission.csv'))} rows in `sample_submission.csv`."
     )
 
     assert "id" in read_csv(private / "answers.csv").columns, (
@@ -98,14 +98,14 @@ def prepare(raw: Path, public: Path, private: Path) -> None:
         f"{read_csv(private / 'answers.csv').columns}."
     )
 
-    assert "id" in read_csv(public / "sampleSubmission.csv").columns, (
-        f"Expected `sampleSubmission.csv` to have an 'id' column, but got "
-        f"{read_csv(public / 'sampleSubmission.csv').columns}."
+    assert "id" in read_csv(public / "sample_submission.csv").columns, (
+        f"Expected `sample_submission.csv` to have an 'id' column, but got "
+        f"{read_csv(public / 'sample_submission.csv').columns}."
     )
 
-    assert "value" in read_csv(public / "sampleSubmission.csv").columns, (
-        f"Expected `sampleSubmission.csv` to have a 'value' column, but got "
-        f"{read_csv(public / 'sampleSubmission.csv').columns}."
+    assert "value" in read_csv(public / "sample_submission.csv").columns, (
+        f"Expected `sample_submission.csv` to have a 'value' column, but got "
+        f"{read_csv(public / 'sample_submission.csv').columns}."
     )
 
 
