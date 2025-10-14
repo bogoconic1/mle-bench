@@ -71,6 +71,7 @@ def prepare(raw: Path, public: Path, private: Path):
     sample_submission = answers.copy()
     sample_submission["is_iceberg"] = 0.5
     sample_submission.to_csv(public / "sample_submission.csv", index=False)
+    sample_submission.to_csv(private / "sample_submission.csv", index=False)
     with py7zr.SevenZipFile(public / "sample_submission.csv.7z", "w") as archive:
         archive.write(
             private / "sample_submission.csv",
