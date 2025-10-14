@@ -6,11 +6,13 @@ Code for the paper ["MLE-Bench: Evaluating Machine Learning Agents on Machine Le
 
 | Agent | Low == Lite (%) | Medium (%) | High (%) | All (%) | Running Time (hours) | Date | Grading Reports Available | Source Code Available 
 |---------|--------|-----------|---------|----------|--------|------|------|------|
+| [Operand](https://operand.com) ensemble | 63.64 ± 5.92 | 33.33 ± 4.42 | 20.00 ± 5.96 | 39.56 ± 3.26 | 24 | 2025-10-06 | ✓ | X |
 | [InternAgent](https://github.com/Alpha-Innovator/InternAgent/) deepseek-r1 | 62.12 ± 3.03 | 26.32 ± 2.63 | 24.44 ± 2.22| 36.44 ± 1.18 | 12 | 2025-09-12	 | ✓ | X |
+| [R&D-Agent](https://github.com/microsoft/RD-Agent) gpt-5 | 68.18 ± 2.62 | 21.05 ± 1.52 | 22.22 ± 2.22 | 35.11 ± 0.44 | 12 | 2025-09-26 | ✓ | ✓ |
 | [Neo](https://heyneo.so/) multi-agent | 48.48 ± 1.52 | 29.82 ± 2.32	| 24.44 ± 2.22 | 34.22 ± 0.89 | 36 | 2025-07-28 | ✓ | X |
-| [R&D-Agent](https://github.com/microsoft/RD-Agent) o3 + GPT-4.1 | 51.52 ± 6.9 | 19.3 ± 5.5 | 26.67 ± 0 | 30.22 ± 1.5 | 24 | 2025-08-15 | ✓ | ✓ |
+| [R&D-Agent](https://github.com/microsoft/RD-Agent) o3 + GPT-4.1 | 51.52 ± 4 | 19.3 ± 3.16 | 26.67 ± 0 | 30.22 ± 0.89 | 24 | 2025-08-15 | ✓ | ✓ |
 | [ML-Master](https://github.com/zeroxleo/ML-Master) deepseek-r1 | 48.5 ± 1.5 | 20.2 ± 2.3 | 24.4 ± 2.2| 29.3 ± 0.8 | 12 | 2025-06-17 | ✓ | ✓ |
-| [R&D-Agent](https://github.com/microsoft/RD-Agent) o1-preview | 48.18 ± 2.49 | 8.95 ± 2.36 | 18.67 ± 2.98 | 22.4 ± 1.1 | 24 | 2025-05-14 | ✓ | ✓ |
+| [R&D-Agent](https://github.com/microsoft/RD-Agent) o1-preview | 48.18 ± 1.1 | 8.95 ± 1.05 | 18.67 ± 1.33 | 22.4 ± 0.5 | 24 | 2025-05-14 | ✓ | ✓ |
 | AIDE o1-preview | 34.3 ± 2.4 | 8.8 ± 1.1 | 10.0 ± 1.9 | 16.9 ± 1.1 | 24 | 2024-10-08 | ✓ | ✓ |
 | AIDE gpt-4o-2024-08-06 | 19.0 ± 1.3 | 3.2 ± 0.5 | 5.6 ± 1.0 | 8.6 ± 0.5 | 24 | 2024-10-08 | ✓ | ✓ |
 | AIDE claude-3-5-sonnet-20240620 | 19.4 ± 4.9 | 2.6 ± 1.5 | 2.3 ± 2.3 | 7.5 ± 1.8 | 24 | 2024-10-08 | ✓ | ✓ |
@@ -185,7 +187,7 @@ There are some known issues with certain MLE-bench competitions. Since we have
 already received leaderboard submissions, we are postponing fixes to avoid
 invalidating the leaderboard. Instead, we plan to release batched fixes in the
 upcoming v2 release of MLE-bench on the
-[openai/preparedness](https://github.com/openai/preparedness) repo, which will
+[openai/frontier-evals](https://github.com/openai/frontier-evals) repo, which will
 include a version column in the leaderboard to distinguish between v1 and v2 results.
 If you wish to make a submission to v1 in the meantime, please still include
 the following competitions in your overall scores. The known issues are
@@ -210,6 +212,8 @@ catalogued below:
   little difference between the top score and the median score.
 - **champs-scalar-coupling**: test molecules are missing in structures.csv.
   [#70](https://github.com/openai/mle-bench/pull/70)
+- **multi-modal-gesture-recognition**: public test `.mat` files leak test labels.
+  [#77](https://github.com/openai/mle-bench/issues/77)
 
 ## Authors
 
