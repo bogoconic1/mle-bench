@@ -1,5 +1,5 @@
 import pandas as pd
-from sklearn.metrics import mean_squared_error
+from sklearn.metrics import root_mean_squared_error
 
 from mlebench.grade_helpers import InvalidSubmissionError
 
@@ -40,7 +40,7 @@ def prepare_for_metric(submission: pd.DataFrame, answers: pd.DataFrame) -> dict:
 
 def grade(submission: pd.DataFrame, answers: pd.DataFrame) -> float:
     inputs = prepare_for_metric(submission, answers)
-    rmse = mean_squared_error(**inputs, squared=False)
+    rmse = root_mean_squared_error(**inputs)
     return float(rmse)
 
 
