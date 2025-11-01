@@ -1,0 +1,17 @@
+id: playground-series-s5e11
+name: Loan Repayment Prediction (Playground Series S5E11)
+competition_type: simple
+awards_medals: false
+prizes: null
+description: mlebench/competitions/playground-series-s5e11/description.md
+
+dataset:
+  answers: playground-series-s5e11/prepared/private/answers.csv
+  sample_submission: playground-series-s5e11/prepared/public/sample_submission.csv
+
+grader:
+  name: roc_auc
+  grade_fn: mlebench.competitions.playground-series-s5e11.grade:grade
+
+preparer: mlebench.competitions.playground-series-s5e11.prepare:prepare
+
