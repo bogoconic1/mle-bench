@@ -9,8 +9,15 @@ def convert(src: Path, dst: Path) -> None:
     # Ensure numeric and sorted by Rank if present
     if "score" in df.columns:
         df["score"] = pd.to_numeric(df["score"], errors="coerce")
+        df["score"] = df["score"].round(5)
     if "Rank" in df.columns:
-        df = df.sort_values("Rank")
+        # Separate baselines (Rank=0) from actual entries
+        baselines = df[df["Rank"] == 0].copy()
+        actual_entries = df[df["Rank"] != 0].copy()
+        # Sort actual entries by Rank
+        actual_entries = actual_entries.sort_values("Rank")
+        # Combine: actual entries first, then baselines at the end
+        df = pd.concat([actual_entries, baselines], ignore_index=True)
     df.to_csv(dst, index=False)
 
 
