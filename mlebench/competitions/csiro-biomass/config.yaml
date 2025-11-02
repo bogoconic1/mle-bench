@@ -1,0 +1,16 @@
+id: csiro-biomass
+name: CSIRO - Image2Biomass Prediction
+competition_type: simple
+awards_medals: true
+prizes: 75000 USD
+description: mlebench/competitions/csiro-biomass/description.md
+
+dataset:
+  answers: csiro-biomass/prepared/private/answers.csv
+  sample_submission: csiro-biomass/prepared/public/sample_submission.csv
+
+grader:
+  name: weighted_r2
+  grade_fn: mlebench.competitions.csiro-biomass.grade:grade
+
+preparer: mlebench.competitions.csiro-biomass.prepare:prepare
