@@ -14,6 +14,8 @@ def prepare(raw: Path, public: Path, private: Path):
 
     Each image has 5 target measurements, so we split by unique images
     rather than by rows to keep all targets together.
+
+    Uses stratified splitting by month to ensure temporal balance.
     """
     # Load training data
     old_train = read_csv(raw / "train.csv")
@@ -23,11 +25,22 @@ def prepare(raw: Path, public: Path, private: Path):
     old_train["image_id"] = old_train["image_path"].apply(
         lambda x: Path(x).stem
     )
-    unique_images = old_train["image_id"].unique()
 
-    # Split unique images into train/test (10% test, 90% train)
+    # Extract month for stratification
+    old_train["month"] = pd.to_datetime(old_train["Sampling_Date"]).dt.month
+
+    # Create stratification variable combining State and month
+    old_train["strata"] = old_train["State"].astype(str) + "_" + old_train["month"].astype(str)
+
+    # Get unique images with their corresponding strata
+    # Use groupby to get one row per image (they all have the same strata for a given image)
+    image_strata_df = old_train.groupby("image_id")[["strata"]].first().reset_index()
+    unique_images = image_strata_df["image_id"].values
+    strata = image_strata_df["strata"].values
+
+    # Split unique images into train/test (10% test, 90% train) stratified by State and month
     train_images, test_images = train_test_split(
-        unique_images, test_size=0.1, random_state=0
+        unique_images, test_size=0.1, random_state=0, stratify=strata
     )
 
     # Create train and test dataframes based on image splits
@@ -38,9 +51,9 @@ def prepare(raw: Path, public: Path, private: Path):
     new_train["image_path"] = new_train["image_id"].apply(lambda x: f"train/{x}.jpg")
     new_test["image_path"] = new_test["image_id"].apply(lambda x: f"test/{x}.jpg")
 
-    # Drop temporary image_id column
-    new_train = new_train.drop(columns=["image_id"])
-    new_test = new_test.drop(columns=["image_id"])
+    # Drop temporary columns (image_id, month, and strata)
+    new_train = new_train.drop(columns=["image_id", "month", "strata"])
+    new_test = new_test.drop(columns=["image_id", "month", "strata"])
 
     # Create public test (without targets and metadata features)
     new_test_without_labels = new_test[["sample_id", "image_path", "target_name"]].copy()
