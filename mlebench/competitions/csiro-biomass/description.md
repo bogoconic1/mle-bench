@@ -93,36 +93,6 @@ ID1001187976__Dry_Clover_g,0.0
 ID1001187976__GDM_g,0.0
 ID1001187976__Dry_Total_g,0.0
 ```
-
-
-----------------------
-# Timeline
-
-* **October 28, 2025** - Start Date. 
-* **January 21, 2026** - Entry Deadline. You must accept the competition rules before this date in order to compete. 
-* **January 21, 2026** - Team Merger Deadline. This is the last day participants may join or merge teams. 
-* **January 28, 2026** - Final Submission Deadline. 
-
-All deadlines are at 11:59 PM UTC on the corresponding day unless otherwise noted. The competition organizers reserve the right to update the contest timeline if they deem it necessary.
-----------------------
-# Code Requirements
-
-<img src="https://storage.googleapis.com/kaggle-media/competitions/general/Kerneler-white-desc2_transparent.png" style="float: right; width: 70px; padding: 10px">
-
-Submissions to this competition must be made through Notebooks. In order for the "Submit" button to be active after a commit, the following conditions must be met: 
-- CPU Notebook <= 9 hours run-time 
-- GPU Notebook <= 9 hours run-time 
-- Internet access disabled 
-- Freely & publicly available external data is allowed, including pre-trained models 
-- Submission file must be named `submission.csv` 
-
-Please see the [Code Competition FAQ](https://www.kaggle.com/docs/competitions#notebooks-only-FAQ) for more information on how to submit. And review the [code debugging doc](https://www.kaggle.com/code-competition-debugging) if you are encountering submission errors.
-----------------------
-# Prizes
-
-* 1st Place - $50,000
-* 2nd Place - $20,000
-* 3rd Place - $5,000
 ----------------------
 # Acknowledgements
 
